@@ -20,7 +20,7 @@ Toggle Imenu support for frameworks and structural patterns.
 ;;;***
 
 ;;;### (autoloads nil "../../.dotfiles/.emacs.d/lisp/js2-mode/js2-mode"
-;;;;;;  "../lisp/js2-mode/js2-mode.el" "c15f700eb2eea6a5f35955d74a4818d4")
+;;;;;;  "../lisp/js2-mode/js2-mode.el" "31f62ae1c912b73c065e33824b0e78f3")
 ;;; Generated autoloads from ../lisp/js2-mode/js2-mode.el
 
 (autoload 'js2-highlight-unused-variables-mode "../../.dotfiles/.emacs.d/lisp/js2-mode/js2-mode" "\
@@ -42,6 +42,58 @@ Major mode for editing JavaScript code.
 \(fn)" t nil)
 
 (autoload 'js2-jsx-mode "../../.dotfiles/.emacs.d/lisp/js2-mode/js2-mode" "\
+Major mode for editing JSX code.
+
+To customize the indentation for this mode, set the SGML offset
+variables (`sgml-basic-offset' et al) locally, like so:
+
+  (defun set-jsx-indentation ()
+    (setq-local sgml-basic-offset js2-basic-offset))
+  (add-hook \\='js2-jsx-mode-hook #\\='set-jsx-indentation)
+
+\(fn)" t nil)
+
+;;;***
+
+;;;### (autoloads nil "../../lisp/js2-mode/js2-imenu-extras" "../../../lisp/js2-mode/js2-imenu-extras.el"
+;;;;;;  "a7580f86032a9ca1d6f6e543cf770ba7")
+;;; Generated autoloads from ../../../lisp/js2-mode/js2-imenu-extras.el
+
+(autoload 'js2-imenu-extras-setup "../../lisp/js2-mode/js2-imenu-extras" "\
+
+
+\(fn)" nil nil)
+
+(autoload 'js2-imenu-extras-mode "../../lisp/js2-mode/js2-imenu-extras" "\
+Toggle Imenu support for frameworks and structural patterns.
+
+\(fn &optional ARG)" t nil)
+
+;;;***
+
+;;;### (autoloads nil "../../lisp/js2-mode/js2-mode" "../../../lisp/js2-mode/js2-mode.el"
+;;;;;;  "c15f700eb2eea6a5f35955d74a4818d4")
+;;; Generated autoloads from ../../../lisp/js2-mode/js2-mode.el
+
+(autoload 'js2-highlight-unused-variables-mode "../../lisp/js2-mode/js2-mode" "\
+Toggle highlight of unused variables.
+
+\(fn &optional ARG)" t nil)
+
+(autoload 'js2-minor-mode "../../lisp/js2-mode/js2-mode" "\
+Minor mode for running js2 as a background linter.
+This allows you to use a different major mode for JavaScript editing,
+such as `js-mode', while retaining the asynchronous error/warning
+highlighting features of `js2-mode'.
+
+\(fn &optional ARG)" t nil)
+
+(autoload 'js2-mode "../../lisp/js2-mode/js2-mode" "\
+Major mode for editing JavaScript code.
+
+\(fn)" t nil)
+
+(autoload 'js2-jsx-mode "../../lisp/js2-mode/js2-mode" "\
 Major mode for editing JSX code in Emacs 26 and earlier.
 
 To edit JSX code in Emacs 27, use `js-mode' as your major mode
@@ -55,6 +107,38 @@ variables (`sgml-basic-offset' et al) locally, like so:
   (add-hook \\='js2-jsx-mode-hook #\\='set-jsx-indentation)
 
 \(fn)" t nil)
+
+;;;***
+
+;;;### (autoloads nil "../../lisp/rjsx-mode/rjsx-mode" "../../../lisp/rjsx-mode/rjsx-mode.el"
+;;;;;;  "b396136fa3d47dc69a356be99ac685fa")
+;;; Generated autoloads from ../../../lisp/rjsx-mode/rjsx-mode.el
+
+(autoload 'rjsx-mode "../../lisp/rjsx-mode/rjsx-mode" "\
+Major mode for editing JSX files.
+
+\(fn)" t nil)
+
+(autoload 'rjsx-minor-mode "../../lisp/rjsx-mode/rjsx-mode" "\
+Minor mode for parsing JSX syntax into an AST.
+
+\(fn &optional ARG)" t nil)
+
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
+
+(autoload 'rjsx-comment-dwim "../../lisp/rjsx-mode/rjsx-mode" "\
+RJSX implementation of `comment-dwim'. If called on a region,
+this function delegates to `comment-or-uncomment-region'. If the
+point is not in a JSX context, it delegates to the
+`comment-dwim', otherwise it will comment the JSX AST node at
+point using the apppriate comment delimiters.
+
+For example: If point is on a JSX attribute or JSX expression, it
+will comment the entire attribute using \"/* */\". , otherwise if
+it's on a descendent JSX Element, it will use \"{/* */}\"
+instead.
+
+\(fn ARG)" t nil)
 
 ;;;***
 
@@ -75,7 +159,7 @@ Toggle Imenu support for frameworks and structural patterns.
 ;;;***
 
 ;;;### (autoloads nil "../lisp/js2-mode/js2-mode" "../../../.emacs.d/lisp/js2-mode/js2-mode.el"
-;;;;;;  "c15f700eb2eea6a5f35955d74a4818d4")
+;;;;;;  "31f62ae1c912b73c065e33824b0e78f3")
 ;;; Generated autoloads from ../../../.emacs.d/lisp/js2-mode/js2-mode.el
 
 (autoload 'js2-highlight-unused-variables-mode "../lisp/js2-mode/js2-mode" "\
@@ -97,10 +181,7 @@ Major mode for editing JavaScript code.
 \(fn)" t nil)
 
 (autoload 'js2-jsx-mode "../lisp/js2-mode/js2-mode" "\
-Major mode for editing JSX code in Emacs 26 and earlier.
-
-To edit JSX code in Emacs 27, use `js-mode' as your major mode
-with `js2-minor-mode' enabled.
+Major mode for editing JSX code.
 
 To customize the indentation for this mode, set the SGML offset
 variables (`sgml-basic-offset' et al) locally, like so:
@@ -331,17 +412,26 @@ Display a list of packages.
 ;;;***
 
 ;;;### (autoloads nil nil ("../../../.emacs.d/lisp/js2-mode/js2-imenu-extras.el"
+;;;;;;  "../../../.emacs.d/lisp/js2-mode/js2-imenu-extras.el" "../../../.emacs.d/lisp/js2-mode/js2-imenu-extras.el"
 ;;;;;;  "../../../.emacs.d/lisp/js2-mode/js2-imenu-extras.el" "../../../.emacs.d/lisp/js2-mode/js2-mode.el"
+;;;;;;  "../../../.emacs.d/lisp/js2-mode/js2-mode.el" "../../../.emacs.d/lisp/js2-mode/js2-mode.el"
 ;;;;;;  "../../../.emacs.d/lisp/js2-mode/js2-mode.el" "../../../.emacs.d/lisp/js2-mode/js2-old-indent.el"
 ;;;;;;  "../../../.emacs.d/lisp/rjsx-mode/js2-tests.el" "../../../.emacs.d/lisp/rjsx-mode/rjsx-mode.el"
-;;;;;;  "../../../.emacs.d/lisp/rjsx-mode/rjsx-tests.el" "../lisp/js2-mode/js2-imenu-extras.el"
+;;;;;;  "../../../.emacs.d/lisp/rjsx-mode/rjsx-mode.el" "../../../.emacs.d/lisp/rjsx-mode/rjsx-mode.el"
+;;;;;;  "../../../.emacs.d/lisp/rjsx-mode/rjsx-tests.el" "../../../lisp/js2-mode/js2-imenu-extras.el"
+;;;;;;  "../../../lisp/js2-mode/js2-imenu-extras.el" "../../../lisp/js2-mode/js2-mode.el"
+;;;;;;  "../../../lisp/js2-mode/js2-mode.el" "../../../lisp/js2-mode/js2-old-indent.el"
+;;;;;;  "../../../lisp/rjsx-mode/js2-tests.el" "../../../lisp/rjsx-mode/rjsx-mode.el"
+;;;;;;  "../../../lisp/rjsx-mode/rjsx-tests.el" "../lisp/js2-mode/js2-imenu-extras.el"
+;;;;;;  "../lisp/js2-mode/js2-imenu-extras.el" "../lisp/js2-mode/js2-imenu-extras.el"
 ;;;;;;  "../lisp/js2-mode/js2-imenu-extras.el" "../lisp/js2-mode/js2-mode.el"
+;;;;;;  "../lisp/js2-mode/js2-mode.el" "../lisp/js2-mode/js2-mode.el"
 ;;;;;;  "../lisp/js2-mode/js2-mode.el" "el-get/el-get-autoloading.el"
 ;;;;;;  "el-get/el-get-build.el" "el-get/el-get-byte-compile.el"
 ;;;;;;  "el-get/el-get-core.el" "el-get/el-get-custom.el" "el-get/el-get-dependencies.el"
 ;;;;;;  "el-get/el-get-install.el" "el-get/el-get-methods.el" "el-get/el-get-notify.el"
 ;;;;;;  "el-get/el-get-recipes.el" "el-get/el-get-status.el") (23809
-;;;;;;  55860 329508 506000))
+;;;;;;  56221 429508 506000))
 
 ;;;***
 

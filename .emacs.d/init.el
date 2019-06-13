@@ -89,7 +89,7 @@
     (eval-print-last-sexp)))
 (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
 
-(setq el-get-dir (locate-user-emacs-file "./../lisp"))
+(setq el-get-dir (locate-user-emacs-file "lisp"))
 
 (el-get-bundle rjsx-mode)
 
