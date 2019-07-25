@@ -26,15 +26,17 @@ ipcolor="magenta"
 usernamecolor="green"
 currentpathcolor="cyan"
 gitbranchcolor="black"
+gitcolor="white"
 shellcolor="white"
 rubycolor="red"
 gcccolor="blue"
+python3color="yellow"
 arrow="\ue0b0"
 left-prompt-top() {
   echo "$(ip-view)%K{${usernamecolor}}%F{${ipcolor}}${arrow}%f$(username-view)%k%F{${usernamecolor}}%K{${currentpathcolor}}${arrow}%f $(current-path-view)%F{${currentpathcolor}}%K{${gitbranchcolor}}${arrow}%f$(git-branch-view)%k%F{${gitbranchcolor}}${arrow}%f"
 }
 left-prompt-middle() {
-  echo "$(shell-view)%F{${shellcolor}}%K{${rubycolor}}${arrow}%f$(ruby-version-view)%k%F{${rubycolor}}%K{${gcccolor}}${arrow}%f$(gcc-version-view)%k%F{${gcccolor}}${arrow}%f"
+  echo "$(shell-view)%F{${shellcolor}}%K{${rubycolor}}${arrow}%f$(ruby-version-view)%k%F{${rubycolor}}%K{${gcccolor}}${arrow}%f$(gcc-version-view)%k%F{${gcccolor}}${arrow}%f$(python3-version-view)%k%F{${python3color}}${arrow}%k%F{${gitcolor}}"
 }
 ip-view() {
     echo "%K{${ipcolor}}%F{white}$(ifconfig | grep -w "inet" | grep -v "127.0.0.1" | cut -f 2 -d ' ')%f%k"
@@ -60,6 +62,9 @@ ruby-version-view() {
 }
 gcc-version-view() {
   echo "%K{${gcccolor}}%F{white}  gcc $(gcc -dumpversion)%f%k"
+}
+python3-version-view() {
+  echo "%K{${python3color}}%F{black}  python $(python3 -V | cut -f 2 -d " ")%f%k"
 }
 
 # lsに色を付けます
